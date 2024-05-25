@@ -8,3 +8,11 @@ SAVE_DIR = "images"
 
 if not os.path.exists(SAVE_DIR):
     os.makedirs(SAVE_DIR)
+
+def get_image_links():
+    response = requests.get(UNSPLASH_URL)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    links = []
+    for img in soup.find_all('img', {'srcset': True}):
+        links.append(img['src'])
+    return links
