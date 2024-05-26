@@ -16,3 +16,8 @@ def get_image_links():
     for img in soup.find_all('img', {'srcset': True}):
         links.append(img['src'])
     return links
+
+def download_image(url, save_path):
+    response = requests.get(url)
+    with open(save_path, 'wb') as file:
+        file.write(response.content)
