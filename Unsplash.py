@@ -32,3 +32,11 @@ def save_metadata(image_id, photographer, category, save_path):
         json.dump(metadata, file, indent=4)
 
 image_links = get_image_links()
+
+for idx, link in enumerate(image_links):
+    image_id = f'image_{idx}'
+    save_path = os.path.join(SAVE_DIR, image_id + '.jpg')
+    metadata_path = os.path.join(SAVE_DIR, image_id + '.json')
+    
+    download_image(link, save_path)
+    save_metadata(image_id, "Unknown", "Uncategorized", metadata_path)
