@@ -50,3 +50,12 @@ def download_and_save_image(link, idx):
     
     download_image(link, save_path)
     save_metadata(image_id, "Unknown", "Uncategorized", metadata_path)
+
+threads = []
+for idx, link in enumerate(image_links):
+    thread = threading.Thread(target=download_and_save_image, args=(link, idx))
+    threads.append(thread)
+    thread.start()
+
+for thread in threads:
+    thread.join()
