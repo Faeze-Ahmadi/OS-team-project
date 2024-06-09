@@ -62,3 +62,11 @@ for thread in threads:
 
 PHOTOTAG_API_KEY = 'JkUi-5etw-kYo3-afTg-m7'
 PHOTOTAG_API_URL = 'https://www.phototag.ai/upload'
+def enhance_metadata(image_path):
+    with open(image_path, 'rb') as image_file:
+        response = requests.post(
+            PHOTOTAG_API_URL,
+            files={'image': image_file},
+            headers={'Authorization': f'Bearer {PHOTOTAG_API_KEY}'}
+        )
+    return response.json()
