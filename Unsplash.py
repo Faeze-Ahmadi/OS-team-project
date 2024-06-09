@@ -59,3 +59,6 @@ for idx, link in enumerate(image_links):
 
 for thread in threads:
     thread.join()
+
+PHOTOTAG_API_KEY = 'JkUi-5etw-kYo3-afTg-m7'
+PHOTOTAG_API_URL = 'https://www.phototag.ai/upload'
