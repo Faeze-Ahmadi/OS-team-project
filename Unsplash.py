@@ -70,3 +70,11 @@ def enhance_metadata(image_path):
             headers={'Authorization': f'Bearer {PHOTOTAG_API_KEY}'}
         )
     return response.json()
+
+def update_metadata(image_id, enhanced_data):
+    metadata_path = os.path.join(SAVE_DIR, image_id + '.json')
+    with open(metadata_path, 'r') as file:
+        metadata = json.load(file)
+    metadata.update(enhanced_data)
+    with open(metadata_path, 'w') as file:
+        json.dump(metadata, file, indent=4)
