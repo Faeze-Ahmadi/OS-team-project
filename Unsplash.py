@@ -78,3 +78,9 @@ def update_metadata(image_id, enhanced_data):
     metadata.update(enhanced_data)
     with open(metadata_path, 'w') as file:
         json.dump(metadata, file, indent=4)
+
+for idx in range(len(image_links)):
+    image_id = f'image_{idx}'
+    image_path = os.path.join(SAVE_DIR, image_id + '.jpg')
+    enhanced_data = enhance_metadata(image_path)
+    update_metadata(image_id, enhanced_data)
