@@ -68,3 +68,9 @@ def get_tags(SAVE_DIR):
             headers = {
                 "Authorization": f'Bearer 7wdc-dqCn-AkCw-NY317'
             }
+            payload = {
+                "language": "en",
+                "maxKeywords": 5,
+                "requiredKeywords": "",
+                "customContext": ""
+            }
