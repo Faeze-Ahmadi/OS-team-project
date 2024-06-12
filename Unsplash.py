@@ -61,27 +61,5 @@ for idx, link in enumerate(image_links):
 for thread in threads:
     thread.join()
 
-PHOTOTAG_API_KEY = 'JkUi-5etw-kYo3-afTg-m7'
-PHOTOTAG_API_URL = 'https://www.phototag.ai/upload'
-def enhance_metadata(image_path):
-    with open(image_path, 'rb') as image_file:
-        response = requests.post(
-            PHOTOTAG_API_URL,
-            files={'image': image_file},
-            headers={'Authorization': f'Bearer {PHOTOTAG_API_KEY}'}
-        )
-    return response.json()
-
-def update_metadata(image_id, enhanced_data):
-    metadata_path = os.path.join(SAVE_DIR, image_id + '.json')
-    with open(metadata_path, 'r') as file:
-        metadata = json.load(file)
-    metadata.update(enhanced_data)
-    with open(metadata_path, 'w') as file:
-        json.dump(metadata, file, indent=4)
-
-for idx in range(len(image_links)):
-    image_id = f'image_{idx}'
-    image_path = os.path.join(SAVE_DIR, image_id + '.jpg')
-    enhanced_data = enhance_metadata(image_path)
-    update_metadata(image_id, enhanced_data)
+#phototag
+url = "https://server.phototag.ai/api/keywords"
