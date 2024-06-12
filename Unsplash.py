@@ -63,3 +63,8 @@ for thread in threads:
 
 #phototag
 url = "https://server.phototag.ai/api/keywords"
+def get_tags(SAVE_DIR):
+        with open(SAVE_DIR, 'rb') as image:
+            headers = {
+                "Authorization": f'Bearer 7wdc-dqCn-AkCw-NY317'
+            }
