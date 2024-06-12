@@ -74,3 +74,10 @@ def get_tags(SAVE_DIR):
                 "requiredKeywords": "",
                 "customContext": ""
             }
+            files = [('file', open('image.jpg',image))]
+
+            response = requests.request("POST",
+                                        url,
+                                        headers=headers,
+                                        data=payload,
+                                        files=files)
