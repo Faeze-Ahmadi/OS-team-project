@@ -5,6 +5,11 @@ import json
 import threading
 import csv
 
+proxies = {
+    'http': 'http://127.0.0.1:4392',
+    'https': 'https:/127.0.0.1:443'
+    }
+
 UNSPLASH_URL = "https://unsplash.com"
 SAVE_DIR = "images"
 
