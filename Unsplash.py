@@ -86,3 +86,23 @@ def get_tags(SAVE_DIR):
                                         headers=headers,
                                         data=payload,
                                         files=files)
+
+def generate_summary_report():
+    report_path = os.path.join(SAVE_DIR, 'summary_report.csv')
+    with open(report_path, 'w', newline='') as csvfile:
+        fieldnames = ['image_id', 'photographer', 'category', 'tags', 'description']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for idx in range(len(image_links)):
+            image_id = f'image_{idx}'
+            metadata_path = os.path.join(SAVE_DIR, image_id + '.json')
+            with open(metadata_path, 'r') as file:
+                metadata = json.load(file)
+            writer.writerow({
+                'image_id': metadata.get('image_id', ''),
+                'photographer': metadata.get('photographer', ''),
+                'category': metadata.get('category', ''),
+                'tags': ', '.join(metadata.get('tags', [])),
+                'description': metadata.get('description', '')
+            })
+
