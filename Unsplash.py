@@ -106,3 +106,4 @@ def generate_summary_report():
                 'description': metadata.get('description', '')
             })
 
+generate_summary_report()
